@@ -10,7 +10,7 @@ import numpy as np, htools.maths as htm, htools.physx as htp
 from pygame.locals import *
 import pygame.gfxdraw
 
-G = 9.81 * 0.001
+G = 9.81 * 0.0001
 e = 0.7
 class Ball:
     def __init__(self, m, r, x, v, colour, bound):
@@ -80,7 +80,7 @@ BACKGROUND = BLACK
 
 #other constants
 TIME_WAIT = 0.0001
-V_SCALE = 0.0001
+V_SCALE = 0.1
 
 #set up counter
 counter = 0
@@ -88,12 +88,15 @@ counter = 0
 
 #system setup
 balls = []
-# for i in range(0, 20):
-#     mass = np.random.randint(1,20)
-#     balls.append(Ball(mass, ((mass - 1) * 5) + 10, np.array([float(np.random.randint(50, WINDOW_WIDTH - 50)), float(np.random.randint(50, WINDOW_HEIGHT - 50))]), np.array([np.random.randint(-30,30) * V_SCALE, np.random.randint(-30, 30) * V_SCALE]), (np.random.randint(0,256),np.random.randint(0,256),np.random.randint(0,256)), pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
-for x in range(100, WINDOW_WIDTH - 100, 120):
-    for y in range(100, WINDOW_HEIGHT - 500, 120):
-        balls.append(Ball(1, np.random.randint(40,80), np.array([float(x) + np.random.randint(-1,2) * 0.01,float(y)]),np.array([np.random.randint(-30,30) * 0.1,np.random.randint(-30,30) * 0.1]), tuple([np.random.randint(0, 256) for x in range(3)]), pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
+for i in range(0, 30):
+    mass = np.random.randint(1,20)
+    balls.append(Ball(mass, ((mass - 1) * 5) + 10, np.array([float(np.random.randint(50, WINDOW_WIDTH - 50)), float(np.random.randint(50, WINDOW_HEIGHT - 50))]), np.array([np.random.randint(-30,30) * V_SCALE, np.random.randint(-30, 30) * V_SCALE]), (np.random.randint(0,256),np.random.randint(0,256),np.random.randint(0,256)), pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
+# for x in range(100, WINDOW_WIDTH - 100, 120):
+#     for y in range(100, WINDOW_HEIGHT - 500, 120):
+#         balls.append(Ball(1, np.random.randint(40,80), np.array([float(x) + np.random.randint(-1,2) * 0.01,float(y)]),np.array([np.random.randint(-30,30) * 0.01,np.random.randint(-30,30) * 0.01]), tuple([np.random.randint(0, 256) for x in range(3)]), pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
+# balls.append(Ball(10,40,np.array([WINDOW_WIDTH / 4, WINDOW_HEIGHT / 2]), np.array([0.1, 0]), RED, pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
+# balls.append(Ball(1,40,np.array([3 * WINDOW_WIDTH / 4, WINDOW_HEIGHT / 2]), np.array([-0.1, 0]), BLUE, pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
+
 # balls.append(Ball(1,100,np.array([WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2]), np.array([-0.1,-0.1]), RED, pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
 # balls.append(Ball(1,10,np.array([WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4]), np.array([0.1,0.1]), BLUE, pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
 #visuals
