@@ -8,6 +8,7 @@ Created on Sun Nov 22 15:08:24 2020
 import pygame, sys, time, random
 import numpy as np, htools.maths as htm, htools.physx as htp
 from pygame.locals import *
+import pygame.gfxdraw
 
 #setup pygame
 pygame.init()
