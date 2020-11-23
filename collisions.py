@@ -5,8 +5,8 @@ Created on Sat Nov 21 20:48:19 2020
 @author: Hector
 """
 
-import pygame, sys, time, random, math
-import numpy as np, htools.maths as htm, htools.physx as htp
+import pygame, sys, time
+import numpy as np, htools.maths as htm
 from pygame.locals import *
 import pygame.gfxdraw
 
@@ -59,10 +59,10 @@ class Ball:
 pygame.init()
 
 #set up the window
-WINDOW_WIDTH = 1000
-WINDOW_HEIGHT = 1000
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 800
 NO_FLAGS = 0
-COLOUR_DEPTH = 32
+COLOUR_DEPTH = 327
 WIN_TITLE="Collisions"
 WindowSurface = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), NO_FLAGS, COLOUR_DEPTH)
 pygame.display.set_caption(WIN_TITLE)
@@ -88,7 +88,7 @@ counter = 0
 
 #system setup
 balls = []
-for i in range(0, 30):
+for i in range(0, 20):
     mass = np.random.randint(1,20)
     balls.append(Ball(mass, ((mass - 1) * 5) + 10, np.array([float(np.random.randint(50, WINDOW_WIDTH - 50)), float(np.random.randint(50, WINDOW_HEIGHT - 50))]), np.array([np.random.randint(-30,30) * V_SCALE, np.random.randint(-30, 30) * V_SCALE]), (np.random.randint(0,256),np.random.randint(0,256),np.random.randint(0,256)), pygame.Rect(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)))
 # for x in range(100, WINDOW_WIDTH - 100, 120):

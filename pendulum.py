@@ -1,5 +1,5 @@
-import pygame, sys, time, random
-import numpy as np, htools.maths as htm, htools.physx as htp
+import pygame, sys, time
+import numpy as np, htools.maths as htm
 from pygame.locals import *
 
 #setup pygame
@@ -42,7 +42,7 @@ counter = 0
 
 #system setup
 O = np.array([WINDOW_WIDTH/2, WINDOW_HEIGHT / 4])
-l = 100
+l = 300
 r = np.array([l * np.sin(THE_INIT) + O[0], l * np.cos(THE_INIT) + O[1]])
 v = np.array([0.0,0.0])
 O_F = np.array([0.0, 0.05 * M_F * G]); O_F = np.array([0,0])
