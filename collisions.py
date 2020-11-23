@@ -10,7 +10,7 @@ import numpy as np, htools.maths as htm
 from pygame.locals import *
 import pygame.gfxdraw
 
-G = 9.81 * 0.0001
+G = 9.81 * 0.0001 
 e = 0.7
 class Ball:
     def __init__(self, m, r, x, v, colour, bound):
