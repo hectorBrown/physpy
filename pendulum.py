@@ -32,7 +32,7 @@ TIME_WAIT = 0.01
 F_DISP_SCALE = 500
 V_DISP_SCALE = 50
 BOB_WIDTH = 10
-THE_INIT = np.pi / 3;
+THE_INIT = 0
 M = M_O = 1
 G = 9.81 * GRAVITY_SCALE
 
@@ -85,7 +85,7 @@ while True:
     O_v += O_a
     O += O_v
     if not v[0] == 0 and v[1] == 0:
-        v = np.sqrt((2 * (E_tot - M * G * (WINDOW_HEIGHT - r[1])))/M) * htm.unit(v)
+        v = np.sqrt(abs((2 * (E_tot - M * G * (WINDOW_HEIGHT - r[1])))/M)) * htm.unit(v)
     v += a
     r += v + O_v
     trail_list.append(r.copy())
