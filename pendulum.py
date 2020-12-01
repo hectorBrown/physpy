@@ -50,6 +50,9 @@ O_F = np.array([0.0, 0.05 * M_O * G]); O_F = np.array([0,0])
 O_v = np.array([0.0,0.0])
 E_tot = 1/2 * M * htm.mag(v)**2 + M * G * (WINDOW_HEIGHT - r[1])
 
+F_0 = 0.0005
+ome = 0.05
+
 #visuals
 trail_list = []
 
@@ -75,7 +78,8 @@ while True:
     T_mag = htm.mag(F_g) * np.cos(the) + htm.mag(v - O_v)**2/l
     F_T = T_mag * htm.unit(-rel_r)
     F_d = -b/M * v
-    F = F_g + F_T + (1) * np.dot(O_F, rel_r) + F_d
+    F_D = F_0 * np.cos(ome * counter) * htm.perp2d(rel_r)
+    F = F_g + F_T + (1) * np.dot(O_F, rel_r) + F_d + F_D
     a = F / M
     O_a = O_F / M_O
     O_v += O_a
