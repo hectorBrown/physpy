@@ -33,7 +33,7 @@ F_DISP_SCALE = 500
 V_DISP_SCALE = 50
 BOB_WIDTH = 10
 THE_INIT = np.pi / 3;
-M = M_F = 1
+M = M_O = 1
 G = 9.81 * GRAVITY_SCALE
 
 #set up counter
@@ -43,9 +43,10 @@ counter = 0
 #system setup
 O = np.array([WINDOW_WIDTH/2, WINDOW_HEIGHT / 4])
 l = 300
+b=0.001
 r = np.array([l * np.sin(THE_INIT) + O[0], l * np.cos(THE_INIT) + O[1]])
 v = np.array([0.0,0.0])
-O_F = np.array([0.0, 0.05 * M_F * G]); O_F = np.array([0,0])
+O_F = np.array([0.0, 0.05 * M_O * G]); O_F = np.array([0,0])
 O_v = np.array([0.0,0.0])
 E_tot = 1/2 * M * htm.mag(v)**2 + M * G * (WINDOW_HEIGHT - r[1])
 
@@ -73,9 +74,10 @@ while True:
     F_g = np.array([0, M * G])
     T_mag = htm.mag(F_g) * np.cos(the) + htm.mag(v - O_v)**2/l
     F_T = T_mag * htm.unit(-rel_r)
-    F = F_g + F_T + (1) * np.dot(O_F, rel_r)
+    F_d = -b/M * v
+    F = F_g + F_T + (1) * np.dot(O_F, rel_r) + F_d
     a = F / M
-    O_a = O_F / M_F
+    O_a = O_F / M_O
     O_v += O_a
     O += O_v
     if not v[0] == 0 and v[1] == 0:
