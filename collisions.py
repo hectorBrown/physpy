@@ -62,7 +62,7 @@ pygame.init()
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 800
 NO_FLAGS = 0
-COLOUR_DEPTH = 327
+COLOUR_DEPTH = 32
 WIN_TITLE="Collisions"
 WindowSurface = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), NO_FLAGS, COLOUR_DEPTH)
 pygame.display.set_caption(WIN_TITLE)
