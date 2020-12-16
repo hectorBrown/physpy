@@ -44,8 +44,8 @@ counter = 0
 #system setup
 #harmonics = [(3,2),(2,3),(4,5),(5,6)]
 #psi_0_s = [0.25,0.25,0.25,0.25]
-harmonics = [(1,1)]
-psi_0_s = [1]
+harmonics = [(2,3),(3,2)]
+psi_0_s = [0.5,0.5]
 v = 140
 a = 0.5
 b = 0.2
