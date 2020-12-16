@@ -34,7 +34,7 @@ MAGENTA = (255,0,255)
 BACKGROUND = BLACK
 
 #other constants
-CLOCK = 0.01
+CLOCK = 0
 
 
 #set up counter
@@ -42,6 +42,8 @@ counter = 0
 
 
 #system setup
+#harmonics = [(3,2),(2,3),(4,5),(5,6)]
+#psi_0_s = [0.25,0.25,0.25,0.25]
 harmonics = [(1,1)]
 psi_0_s = [1]
 v = 140
@@ -54,9 +56,11 @@ def psi(x,y,t,harmonics, psi_0_s):
     return sum([normal_psi(x,y,t,harmonic,psi_0) for harmonic,psi_0 in zip(harmonics,psi_0_s)])
 
 #visuals
-factor = 500
+factor = 1000
 normal_factor = 1
-time_normal = 0.0001
+zoom = 5
+time_normal = 0.00005
+#time_normal = 0.0001
 disp_rect = pygame.Rect(W_W / 2 - (factor * a) / 2, W_H / 2 - (factor * b) / 2,factor * a,factor * b)
 def normalise_color(t):
     res = []
@@ -88,12 +92,17 @@ while True:
     #draw the black background onto the surface
     W_S.fill(BACKGROUND)
    
-    for x in range(disp_rect.width):
-        for y in range(disp_rect.height):
-            pygame.gfxdraw.pixel(W_S,x + disp_rect.left,y + disp_rect.top,normalise_color(tuple([int((psi(x/factor,y/factor,t,harmonics,psi_0_s) * normal_factor + 1) * 128)] * 3)))
     #draw components
-    
-    
+    W_S.lock()
+    for x in range(0,disp_rect.width,zoom):
+        for y in range(0,disp_rect.height,zoom):
+            #pygame.gfxdraw.pixel(W_S,x + disp_rect.left,y + disp_rect.top,normalise_color(tuple([int((psi(x/factor,y/factor,t,harmonics,psi_0_s) * normal_factor + 1) * 128)] * 3)))
+            if zoom == 1:
+                W_S.set_at((x + disp_rect.left, y + disp_rect.top), normalise_color(tuple([int((psi(x/factor,y/factor,t,harmonics,psi_0_s) * normal_factor + 1) * 128)] * 3)))
+            else:
+                pygame.draw.rect(W_S, normalise_color(tuple([int((psi(x/factor,y/factor,t,harmonics,psi_0_s) * normal_factor + 1) * 128)] * 3)), pygame.Rect(x + disp_rect.left, y + disp_rect.top, zoom, zoom))
+    W_S.unlock()
+
     counter += 1
     time.sleep(CLOCK)
     pygame.display.update()
