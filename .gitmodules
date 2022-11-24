@@ -1,3 +1,3 @@
 [submodule "htools"]
 	path = htools
-	url = ./htools
+	url = https://github.com/hectorBrown/htools
