@@ -5,7 +5,8 @@ Created on Sun Nov 22 15:08:24 2020
 @author: Hector
 """
 
-import pygame, sys, time
+import pygame, sys, time, os
+sys.path.append(os.path.abspath("htools"))
 import numpy as np, htools.maths as htm, htools.physx as htp
 from pygame.locals import *
 import pygame.gfxdraw
